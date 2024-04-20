@@ -1,6 +1,6 @@
 # flutter_application_1
 
-A new Flutter project.
+A new flutter project and he is a social media app with firebase.
 
 ## Getting Started
 
