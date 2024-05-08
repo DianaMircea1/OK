@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/components/drawer.dart';
 import 'package:flutter_application_1/components/my_textfield.dart';
 import 'package:flutter_application_1/components/wall_post.dart';
+import 'package:flutter_application_1/helper/helper_methods.dart';
 import 'package:flutter_application_1/pages/profile_page.dart';
 
 class HomePage extends StatefulWidget{
@@ -61,8 +62,14 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        title: const Text("Wink"),
-        backgroundColor: Colors.purple[900],
+        title: const Text("Wink",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Colors.grey[800],
         ),
         drawer: MyDrawer(
           onProfileTap: gotoProfilePage,
@@ -93,6 +100,7 @@ class _HomePageState extends State<HomePage> {
                             user: post["UserEmail"],
                             postId: post.id,
                             likes: List<String>.from(post["Likes"] ?? []),
+                            time: formatDate(post["Timestamp"]),
                           );
                         },
                       );

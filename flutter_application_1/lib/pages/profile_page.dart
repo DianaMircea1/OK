@@ -71,7 +71,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Profile Page"),
-        backgroundColor: Colors.purple[900],
+        backgroundColor: Colors.grey[800],
         ),
         body: StreamBuilder<DocumentSnapshot>(
           stream: FirebaseFirestore.instance.collection("Users").doc(currentuser.email).snapshots(),  
