@@ -1,4 +1,5 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -9,7 +10,7 @@ import 'package:flutter_application_1/components/square_tile.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
-  RegisterPage({super.key, required this.onTap});
+  const RegisterPage({super.key, required this.onTap});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -26,29 +27,42 @@ class _RegisterPageState extends State<RegisterPage> {
     //show loading circle 
     showDialog(
     context: context, 
-    builder: (context) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      ); 
-    }
+    builder: (context) => const Center(child: CircularProgressIndicator(),)
     );
     
+    //make sure passwords match 
+    if(passwordController.text != confirmPasswordController.text){
+      //pop loading circle
+      Navigator.pop(context);
+      //show error to user 
+      showErrorMessage("Passwords do not match!");
+      return;
+    }
     //try creating the user
-    try {
-      if(passwordController.text != confirmPasswordController.text){
+    try{
+
+      //create user 
+      UserCredential userCredential = 
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-    );
-      }else{
-        showErrorMessage("Passwords do not match!");
-      }
-      //pop the loading circle
+        email: emailController.text, 
+        password: passwordController.text);
+
+        //after creating user, create new document in the firebase
+        FirebaseFirestore.instance
+        .collection("Users")
+        .doc(userCredential.user!.email)
+        .set({
+          'username': emailController.text.split('@')[0], //initial username
+          'bio': 'Empty bio', //initial bio
+          //add more fields here
+        });
+
+    //pop loading circle
+    if(context.mounted) Navigator.pop(context);
+    } on FirebaseAuthException catch(e){
+      //pop loading circle
       Navigator.pop(context);
-    } on FirebaseAuthException catch (e){
-      //pop the loading circle
-      Navigator.pop(context);
-      //show error message
+      //show error to user 
       showErrorMessage(e.code);
     }
   }

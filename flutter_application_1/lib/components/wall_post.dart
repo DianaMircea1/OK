@@ -26,6 +26,9 @@ class _WallPostState extends State<WallPost> {
   final user = FirebaseAuth.instance.currentUser!;
   bool isLiked = false;
 
+  //text controller for comment
+  final _commentController = TextEditingController();
+
   @override
   void initState(){
     super.initState();
@@ -54,6 +57,50 @@ class _WallPostState extends State<WallPost> {
     }
   }
 
+  //add a comment
+  void addComment(String commentText){
+    //write the comment to firestore  under the comments collection for this post
+    FirebaseFirestore.instance
+    .collection("User Posts")
+    .doc(widget.postId)
+    .collection("Comments")
+    .add({
+      'CommentText': commentText,
+      'CommentedBy': user.email,
+      'CommentTime': Timestamp.now(), //remember to format this when displaying
+    });
+  }
+
+  //show a dialog box for adding comment
+  void showCommentDialog(BuildContext context){
+    showDialog(
+      context: context, 
+      builder: (context) => AlertDialog(
+        title: Text("Add a comment"),
+        content: TextField(
+          controller: _commentController,
+          decoration: InputDecoration(
+            hintText: "Enter your comment here",
+          ),
+        ),
+        actions:[
+          // Post buttton
+          TextButton(
+            onPressed: () => addComment(_commentController.text), 
+            child: Text("Post"),
+            ),
+
+          //cancel button
+           TextButton(
+            onPressed: () => Navigator.pop(context), 
+            child: Text("Cancel"),
+            ),
+        ],
+      ),
+      );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
@@ -62,23 +109,9 @@ class _WallPostState extends State<WallPost> {
         ),
       margin: EdgeInsets.only(top: 25, left: 25, right: 25),
       padding: EdgeInsets.all(25),
-      child: Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            children: [
-              //like button
-              LikeButton(
-                isLiked: isLiked, 
-                onTap: toggleLike,
-                ),
-              const SizedBox(height: 5,),
-              //like count
-              Text(widget.likes.length.toString(),
-              style: TextStyle(color: Colors.grey),
-              ),
-            ],
-          ),
-          const SizedBox(width: 20,),
           //message and user email
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,6 +123,46 @@ class _WallPostState extends State<WallPost> {
                 const SizedBox(height: 10,),
               Text(widget.message),
             ],
+          ),
+                    const SizedBox(width: 20),
+          //buttons
+          Row(children: [
+            Column(
+            children: [
+            //LIKE
+              //like button
+              LikeButton(
+                isLiked: isLiked, 
+                onTap: toggleLike,
+                ),
+
+              const SizedBox(height: 5,),
+
+              //like count
+              Text(widget.likes.length.toString(),
+              style: TextStyle(color: Colors.grey),
+              ),
+            ],
+          ),
+          //COMMENT
+          Column(
+            children: [
+            //LIKE
+              //comment button
+              LikeButton(
+                isLiked: isLiked, 
+                onTap: toggleLike,
+                ),
+
+              const SizedBox(height: 5,),
+
+              //like count
+              Text(widget.likes.length.toString(),
+              style: TextStyle(color: Colors.grey),
+              ),
+            ],
+          ),
+          ],
           ),
         ],
       ),

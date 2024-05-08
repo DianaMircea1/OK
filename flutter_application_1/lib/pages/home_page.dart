@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/components/drawer.dart';
 import 'package:flutter_application_1/components/my_textfield.dart';
 import 'package:flutter_application_1/components/wall_post.dart';
+import 'package:flutter_application_1/pages/profile_page.dart';
 
 class HomePage extends StatefulWidget{
    const HomePage({super.key});
@@ -41,20 +43,30 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  //go to profile page
+  void gotoProfilePage(){
+    //pop menu drawer 
+    Navigator.pop(context);
+    //go to profile page
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const ProfilePage(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
         title: const Text("Wink"),
-        backgroundColor: Colors.grey[900],
-        actions:[
-          IconButton(
-            onPressed: signUserOut,
-            icon: const Icon(Icons.logout),
-          ),
-        
-          ],
+        backgroundColor: Colors.purple[900],
+        ),
+        drawer: MyDrawer(
+          onProfileTap: gotoProfilePage,
+          onSignOut: signUserOut,
         ),
       body:Center(
         child: Column(
