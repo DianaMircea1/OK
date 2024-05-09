@@ -25,14 +25,14 @@ class _ProfilePageState extends State<ProfilePage> {
       context: context, 
       builder: (context) => AlertDialog(
         backgroundColor: Colors.grey[900],
-        title: Text("Edit $field", style: TextStyle(color: Colors.white),
+        title: Text("Edit $field", style: const TextStyle(color: Colors.white),
         ),
         content: TextField(
           autofocus: true, 
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
           decoration: InputDecoration(
             hintText: 'Enter new $field',
-            hintStyle: TextStyle(color: Colors.grey),
+            hintStyle: const TextStyle(color: Colors.grey),
           ),
           onChanged: (value) {
             newValue = value;
@@ -41,7 +41,7 @@ class _ProfilePageState extends State<ProfilePage> {
         actions: [
           //cancel button
           TextButton(
-            child: Text(
+            child: const Text(
               "Cancel",
               style: TextStyle(color: Colors.white),
             ),
@@ -50,7 +50,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
           //save button
           TextButton(
-            child: Text(
+            child: const Text(
               "Save",
               style: TextStyle(color: Colors.white),
             ),
@@ -60,7 +60,7 @@ class _ProfilePageState extends State<ProfilePage> {
       )
       );
       //update in firestore
-      if(newValue.trim().length >0){
+      if(newValue.trim().isNotEmpty){
          await usersCollection.doc(currentuser.email).update({field: newValue});
       }
 
@@ -70,7 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile Page"),
+        title: const Text("Profile Page"),
         backgroundColor: Colors.grey[800],
         ),
         body: StreamBuilder<DocumentSnapshot>(

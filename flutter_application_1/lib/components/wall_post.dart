@@ -81,10 +81,10 @@ class _WallPostState extends State<WallPost> {
     showDialog(
       context: context, 
       builder: (context) => AlertDialog(
-        title: Text("Add a comment"),
+        title: const Text("Add a comment"),
         content: TextField(
           controller: _commentController,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             hintText: "Enter your comment here",
           ),
         ),
@@ -98,7 +98,7 @@ class _WallPostState extends State<WallPost> {
               //clear the text field
               _commentController.clear();
             }, 
-            child: Text("Cancel"),
+            child: const Text("Cancel"),
             ),
 
             // Post buttton
@@ -113,7 +113,7 @@ class _WallPostState extends State<WallPost> {
               //clear the controller
               _commentController.clear();
             }, 
-            child: Text("Post"),
+            child: const Text("Post"),
             ),
 
         ],
@@ -128,8 +128,8 @@ class _WallPostState extends State<WallPost> {
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(8),
         ),
-      margin: EdgeInsets.only(top: 25, left: 25, right: 25),
-      padding: EdgeInsets.all(25),
+      margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
+      padding: const EdgeInsets.all(25),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         //wallpost
@@ -182,7 +182,7 @@ class _WallPostState extends State<WallPost> {
 
               //like count
               Text(widget.likes.length.toString(),
-              style: TextStyle(color: Colors.grey),
+              style: const TextStyle(color: Colors.grey),
               ),
             ],
           ),

@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+// ignore: unnecessary_import
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/components/my_button.dart';
 import 'package:flutter_application_1/components/my_textfield.dart';
@@ -8,7 +9,7 @@ import 'package:flutter_application_1/components/square_tile.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
-  LoginPage({
+  const LoginPage({
     super.key, 
     required this.onTap
     });
@@ -28,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
     showDialog(
     context: context, 
     builder: (context) {
-      return Center(
+      return const Center(
         child: CircularProgressIndicator(),
       ); 
     }
@@ -40,8 +41,10 @@ class _LoginPageState extends State<LoginPage> {
       email: emailController.text,
       password: passwordController.text,
     );
+      // ignore: use_build_context_synchronously
       Navigator.pop(context);
     } on FirebaseAuthException catch (e){
+      // ignore: use_build_context_synchronously
       Navigator.pop(context);
       //show error message
       showErrorMessage(e.code);

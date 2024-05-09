@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+// ignore: unnecessary_import
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/components/my_button.dart';
 import 'package:flutter_application_1/components/my_textfield.dart';
@@ -58,9 +59,11 @@ class _RegisterPageState extends State<RegisterPage> {
         });
 
     //pop loading circle
+    // ignore: use_build_context_synchronously
     if(context.mounted) Navigator.pop(context);
     } on FirebaseAuthException catch(e){
       //pop loading circle
+      // ignore: use_build_context_synchronously
       Navigator.pop(context);
       //show error to user 
       showErrorMessage(e.code);
