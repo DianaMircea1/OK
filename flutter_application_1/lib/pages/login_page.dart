@@ -6,12 +6,13 @@ import 'package:flutter_application_1/components/my_button.dart';
 import 'package:flutter_application_1/components/my_textfield.dart';
 // ignore: unused_import
 import 'package:flutter_application_1/components/square_tile.dart';
+import 'package:flutter_application_1/pages/forgot_pw_page.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
   const LoginPage({
     super.key, 
-    required this.onTap
+    required this.onTap,
     });
 
   @override
@@ -123,9 +124,22 @@ class _LoginPageState extends State<LoginPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        'Forgot Password?',
-                        style: TextStyle(color: Colors.grey[600]),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, 
+                          MaterialPageRoute(builder: (context) {
+                            return const ForgotPasswordPage();
+                           },
+                          ),
+                        );
+                      },
+                        child: const Text(
+                          'Forgot Password?',
+                          style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        ),
                       ),
                     ],
                   ),
@@ -152,19 +166,7 @@ class _LoginPageState extends State<LoginPage> {
                           color: Colors.grey[400],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                        child: Text(
-                          'Or continue with',
-                          style: TextStyle(color: Colors.grey[700]),
-                        ),
-                      ),
-                      Expanded(
-                        child: Divider(
-                          thickness: 0.5,
-                          color: Colors.grey[400],
-                        ),
-                      ),
+                      const SizedBox(width: 10),
                     ],
                   ),
                 ),
