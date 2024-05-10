@@ -10,7 +10,7 @@ class DeleteButton extends StatelessWidget {
       onTap: onTap,
       child: const Icon(
         Icons.delete_outline,
-        color: Colors.grey,
+        color: Color.fromRGBO(121, 74, 127, 1),
       ),
     );
   }

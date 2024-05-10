@@ -1,3 +1,4 @@
+
 import "package:cloud_firestore/cloud_firestore.dart";
 // ignore: unused_import
 import "package:firebase_core/firebase_core.dart";
@@ -84,11 +85,15 @@ class _WallPostState extends State<WallPost> {
     showDialog(
       context: context, 
       builder: (context) => AlertDialog(
-        title: const Text("Add a comment"),
+        backgroundColor: const Color.fromRGBO(68, 35, 72, 1),
+        title: const Text("Add a comment",
+        style: TextStyle(color: Color.fromRGBO(246, 239, 248, 1)),
+        ),
         content: TextField(
           controller: _commentController,
           decoration: const InputDecoration(
             hintText: "Enter your comment here",
+            hintStyle: TextStyle(color: Color.fromRGBO(246, 239, 248, 1)),
           ),
         ),
         actions:[
@@ -101,7 +106,9 @@ class _WallPostState extends State<WallPost> {
               //clear the text field
               _commentController.clear();
             }, 
-            child: const Text("Cancel"),
+            child: const Text("Cancel",
+            style: TextStyle(color: Color.fromRGBO(246, 239, 248, 1)),
+            ),
             ),
 
             // Post buttton
@@ -116,7 +123,9 @@ class _WallPostState extends State<WallPost> {
               //clear the controller
               _commentController.clear();
             }, 
-            child: const Text("Post"),
+            child: const Text("Post",
+            style: TextStyle(color: Color.fromRGBO(246, 239, 248, 1)),
+            ),
             ),
 
         ],
@@ -130,13 +139,20 @@ class _WallPostState extends State<WallPost> {
     showDialog(
     context: context, 
     builder: (context)=> AlertDialog(
-      title: const Text("Delete Post"),
-      content: const Text("Are you sure you want to delete this post?"),
+      backgroundColor: const Color.fromRGBO(68, 35, 72, 1),
+      title: const Text("Delete Post",
+      style: TextStyle(color: Color.fromRGBO(246, 239, 248, 1)),
+      ),
+      content: const Text("Are you sure you want to delete this post?",
+      style: TextStyle(color: Color.fromRGBO(246, 239, 248, 1)),
+      ),
       actions: [
         //cancel button
         TextButton(
         onPressed: () => Navigator.pop(context), 
-        child: const Text ("Cancel"),
+        child: const Text ("Cancel",
+        style: TextStyle(color: Color.fromRGBO(246, 239, 248, 1)),
+        ),
         ),
 
         //delete button
@@ -172,7 +188,9 @@ class _WallPostState extends State<WallPost> {
             Navigator.pop(context);
 
         }, 
-        child: const Text ("Delete"),
+        child: const Text ("Delete",
+        style: TextStyle(color: Color.fromRGBO(246, 239, 248, 1)),
+        ),
         ),
       ],
     ));
@@ -182,7 +200,7 @@ class _WallPostState extends State<WallPost> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey[200],
+        color: const Color.fromRGBO(239, 226, 242, 1),
         borderRadius: BorderRadius.circular(8),
         ),
       margin: const EdgeInsets.only(top: 25, left: 25, right: 25),
@@ -202,7 +220,9 @@ class _WallPostState extends State<WallPost> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //message
-                  Text(widget.message),
+                  Text(widget.message,
+                  style: const TextStyle(color: Color.fromRGBO(68, 35, 72, 1)),
+                  ),
               
                   const SizedBox(height: 5),
               
@@ -211,15 +231,15 @@ class _WallPostState extends State<WallPost> {
                 children: [
                   Text(
                     widget.user,
-                    style: TextStyle(color: Colors.grey[400]),
+                    style: const TextStyle(color: Color.fromRGBO(98, 60, 103, 1)),
                   ),
-                  Text(
+                  const Text(
                     " - ",
-                    style: TextStyle(color: Colors.grey[400]),
+                    style: TextStyle(color:Color.fromRGBO(98, 60, 103, 1)),
                     ),
                   Text(
                     widget.time,
-                    style: TextStyle(color: Colors.grey[400]),
+                    style: const TextStyle(color: Color.fromRGBO(98, 60, 103, 1)),
                     ),
                 ],
               ),
@@ -252,7 +272,7 @@ class _WallPostState extends State<WallPost> {
 
               //like count
               Text(widget.likes.length.toString(),
-              style: const TextStyle(color: Colors.grey),
+              style: const TextStyle(color: Color.fromRGBO(121, 74, 127, 1)),
               ),
             ],
           ),

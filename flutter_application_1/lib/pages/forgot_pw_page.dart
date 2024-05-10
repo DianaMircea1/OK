@@ -57,25 +57,25 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: const Color.fromRGBO(251, 248, 252, 1),
       appBar: AppBar(
-        title: const Text("Wink - Forgot Password",
+        title: const Text("Reset Password",
         style: TextStyle(
-          color: Colors.white,
+          color: Color.fromRGBO(68, 35, 72, 1),
           fontSize: 20,
           fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: Colors.grey[800],
+        backgroundColor: const Color.fromRGBO(246, 239, 248, 1),
         ),
       body:  Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-           Text(
+           const Text(
             "Enter your email to reset your password",
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.grey[800],
+              color: Color.fromRGBO(68, 35, 72, 1),
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
@@ -89,10 +89,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 const SizedBox(height: 10),
               MaterialButton(
               onPressed: passwordReset,
-              color: Colors.grey[800],
+              color: const Color.fromRGBO(68, 35, 72, 1),
               child: const Text("Reset Password",
               style: TextStyle(
-                color: Colors.white,
+                color: Color.fromRGBO(246, 239, 248, 1),
                 fontSize: 14,
                 fontWeight: FontWeight.bold
               ),

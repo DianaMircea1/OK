@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/components/my_button.dart';
 import 'package:flutter_application_1/components/my_textfield.dart';
-// ignore: unused_import
-import 'package:flutter_application_1/components/square_tile.dart';
 import 'package:flutter_application_1/pages/forgot_pw_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -72,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: const Color.fromRGBO(251, 248, 252, 1),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -83,17 +81,18 @@ class _LoginPageState extends State<LoginPage> {
             
                 // logo
                 const Icon(
-                  Icons.lock,
+                  Icons.account_circle_rounded,
                   size: 100,
+                  color: Color.fromRGBO(121, 74, 127, 1),
                 ),
             
                 const SizedBox(height: 50),
             
                 // welcome back, you've been missed!
-                Text(
+                const Text(
                   'Welcome back you\'ve been missed!',
                   style: TextStyle(
-                    color: Colors.grey[700],
+                    color: Color.fromRGBO(68, 35, 72, 1),
                     fontSize: 16,
                   ),
                 ),
@@ -136,7 +135,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: const Text(
                           'Forgot Password?',
                           style: TextStyle(
-                          color: Colors.blue,
+                          color: Color.fromRGBO(33, 149, 243, 1),
                           fontWeight: FontWeight.bold,
                         ),
                         ),
@@ -152,24 +151,6 @@ class _LoginPageState extends State<LoginPage> {
                   text: 'Sign In',
                   onTap: signUserIn,
                 ),
-            
-                const SizedBox(height: 50),
-            
-                // or continue with
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          thickness: 0.5,
-                          color: Colors.grey[400],
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                    ],
-                  ),
-                ),
 
                 const SizedBox(height: 50),
                 
@@ -177,9 +158,9 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Not a member?',
-                      style: TextStyle(color: Colors.grey[700]),
+                      style: TextStyle(color: Color.fromRGBO(68, 35, 72, 1)),
                     ),
                     const SizedBox(width: 4),
                     GestureDetector(

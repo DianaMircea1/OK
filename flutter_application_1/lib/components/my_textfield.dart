@@ -22,15 +22,15 @@ class MyTextField extends StatelessWidget {
         obscureText: obscureText,
         decoration: InputDecoration(
             enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.white),
+              borderSide: BorderSide(color: Color.fromRGBO(227, 202, 232, 1)),
             ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.shade400),
+            focusedBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color:  Color.fromRGBO(121, 74, 127, 1)),
             ),
-            fillColor: Colors.grey.shade200,
+            fillColor: const Color.fromRGBO(239, 226, 242,1),
             filled: true,
             hintText: hintText,
-            hintStyle: TextStyle(color: Colors.grey[500])),
+            hintStyle: const TextStyle(color: Color.fromRGBO(208, 168, 216, 1))),
       ),
     );
   }

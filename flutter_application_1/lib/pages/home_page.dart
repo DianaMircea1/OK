@@ -60,16 +60,21 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: const Color.fromRGBO(251, 248, 252, 1),
       appBar: AppBar(
-        title: const Text("Wink",
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 20,
+        title: const Text(
+          "Wink",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+          color: Color.fromRGBO(68, 35, 72, 1),
+          fontSize: 40,
           fontWeight: FontWeight.bold,
+          textBaseline: TextBaseline.alphabetic
+
           ),
         ),
-        backgroundColor: Colors.grey[800],
+        backgroundColor: const Color.fromRGBO(246, 239, 248, 1),
+        centerTitle: true,
         ),
         drawer: MyDrawer(
           onProfileTap: gotoProfilePage,
@@ -132,7 +137,8 @@ class _HomePageState extends State<HomePage> {
                   IconButton(
                     onPressed: postMessage,
                     icon: const Icon(
-                      Icons.arrow_circle_up
+                      Icons.arrow_circle_up_rounded,
+                      color: Color.fromRGBO(121, 74, 127, 1),
                     )
                   ),
                 ],
@@ -142,7 +148,7 @@ class _HomePageState extends State<HomePage> {
             //logged in as
              Text(
               "Logged in as:${user.email!}",
-              style: const TextStyle(color: Colors.grey),),
+              style: const TextStyle(color: Color.fromRGBO(208, 168, 216, 1)),),
               const SizedBox(height: 50,),
           ],
         ),

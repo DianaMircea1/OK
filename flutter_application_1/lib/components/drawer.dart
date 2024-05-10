@@ -12,7 +12,7 @@ class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: const Color.fromRGBO(68, 35, 72, 1),
       child:  Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -21,8 +21,8 @@ class MyDrawer extends StatelessWidget {
           //header
           const DrawerHeader(
               child: Icon(
-              Icons.person,
-             color: Colors.white,
+              Icons.account_circle_outlined,
+             color: Color.fromRGBO(246, 239, 248, 1),
               size: 64,
               ),
             ),

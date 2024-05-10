@@ -6,9 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_application_1/components/my_button.dart';
 import 'package:flutter_application_1/components/my_textfield.dart';
-// ignore: unused_import
-import 'package:flutter_application_1/components/square_tile.dart';
-
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
   const RegisterPage({super.key, required this.onTap});
@@ -90,7 +87,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: const Color.fromRGBO(251, 248, 252, 1),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -101,17 +98,18 @@ class _RegisterPageState extends State<RegisterPage> {
             
                 // logo
                 const Icon(
-                  Icons.lock,
+                  Icons.supervisor_account_sharp,
                   size: 100,
+                  color: Color.fromRGBO(121, 74, 127, 1),
                 ),
             
                 const SizedBox(height: 25),
             
                 // let's create an account for you
-                Text(
+                const Text(
                   'Let\'s create an account for you!',
                   style: TextStyle(
-                    color: Colors.grey[700],
+                    color: Color.fromRGBO(68, 35, 72, 1),
                     fontSize: 16,
                   ),
                 ),
@@ -151,31 +149,13 @@ class _RegisterPageState extends State<RegisterPage> {
             
                 const SizedBox(height: 50),
             
-                // or continue with
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          thickness: 0.5,
-                          color: Colors.grey[400],
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                    ],
-                  ),
-                ),
-            
-                const SizedBox(height: 50),
-            
                 // not a member? register now
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Already have an account?',
-                      style: TextStyle(color: Colors.grey[700]),
+                      style: TextStyle(color: Color.fromRGBO(68, 35, 72, 1)),
                     ),
                     const SizedBox(width: 4),
                     GestureDetector(

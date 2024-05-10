@@ -15,7 +15,7 @@ class Comment extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey[300],
+        color: const Color.fromRGBO(227, 202, 232, 1),
         borderRadius: BorderRadius.circular(4),
       ),
       margin: const EdgeInsets.only(bottom: 5),
@@ -24,7 +24,9 @@ class Comment extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //comment
-          Text(text),
+          Text(text,
+          style: const TextStyle(color: Color.fromRGBO(68, 35, 72, 1)),
+          ),
 
           const SizedBox(height: 5),
 
@@ -32,14 +34,14 @@ class Comment extends StatelessWidget {
           Row(
             children: [
               Text(user,
-                style: TextStyle(color: Colors.grey[400]),
+                style: const TextStyle(color:  Color.fromRGBO(98, 60, 103, 1)),
               ),
-              Text(
+               const Text(
                 " - ",
-                style: TextStyle(color: Colors.grey[400]),
+                style:  TextStyle(color: Color.fromRGBO(98, 60, 103, 1)),
                 ),
               Text(time,
-                style: TextStyle(color: Colors.grey[400]),
+                style: const TextStyle(color: Color.fromRGBO(98, 60, 103, 1)),
                 ),
             ],
           ),
